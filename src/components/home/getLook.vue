@@ -1,5 +1,5 @@
 <template>
-  <div class="px-[72px] py-[72px] flex gap-[20px]">
+  <div class="px-[72px] py-[72px] flex justify-between gap-[20px]">
     <div class="w-[33%]">
       <h1 class="uppercase font-bold text-[64px] leading-[77.5px] font-sans">
         {{ $t("CATEGORIES.GET_LOOK") }}
@@ -23,7 +23,7 @@
           </div>
         </button>
       </RouterLink>
-      <div class="flex gap-[10px] right-0 bottom-0 mt-[20px]">
+      <!-- <div class="flex gap-[10px] right-0 bottom-0 mt-[20px]">
         <div
           class="w-[42px] h-[42px] rotate-180 rounded-[50%] bg-gray-200 p-[9px]"
         >
@@ -32,10 +32,10 @@
         <div class="w-[42px] h-[42px] rounded-[50%] bg-gray-200 p-[9px]">
           <img class="w-[24px]" src="/images/icons/chevron.svg" alt="Chevron" />
         </div>
-      </div>
+      </div> -->
     </div>
-    <div class="flex-1">
-      <div class="">
+    <div class="w-[50%]">
+      <div class="max-w-[737px]">
         <swiper
           :slidesPerView="'auto'"
           :spaceBetween="30"

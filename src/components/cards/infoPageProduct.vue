@@ -2,13 +2,17 @@
   <div class="w-max-[278px] relative group" v-for="size in 4">
     <RouterLink to="products/134313" class="w-[278px] h-[100px] bg-black">
       <div class="w-[100%] h-[400px] relative z-0">
-        <swiper :navigation="true" :modules="modules" class="w-[100%] h-[100%]">
+        <swiper
+          :navigation="true"
+          :modules="modules"
+          class="w-[100%] z-0 h-[100%]"
+        >
           <swiper-slide v-for="slide in 8">
             <img class="w-[100%]" src="/images/categoryDressImg.svg" alt="" />
           </swiper-slide>
         </swiper>
         <img
-          class="top-[24px] right-[24px] absolute"
+          class="top-[24px] right-[24px] z-10 absolute"
           src="/images/icons/savedone.svg"
           alt="saveProduct"
         />
@@ -97,21 +101,11 @@
     </div>
   </div>
 </template>
-<script>
+<script setup lang="ts">
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, EffectCards } from "swiper/modules";
 
-export default {
-  components: {
-    Swiper,
-    SwiperSlide,
-  },
-  setup() {
-    return {
-      modules: [Navigation, EffectCards],
-    };
-  },
-};
+const modules = [Navigation, EffectCards];
 </script>

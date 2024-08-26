@@ -55,9 +55,9 @@
       </div>
     </div>
     <div
-      class="p-[72px] bg-[url('/images/mainBG.svg')] bg-[length:100%_100%] max-w-[1500px] w-full h-[800px] flex justify-between mt-[48px]"
+      class="p-[72px] bg-[url('/images/mainBG.svg')] bg-[length:100%_100%] h-[1000px] flex justify-between mt-[48px]"
     >
-      <div>
+      <div class="mt-[100px]">
         <h1
           class="uppercase font-bold text-[64px] leading-[77.5px] max-w-[624px] font-sans"
         >
@@ -71,7 +71,7 @@
           </h4>
         </button>
       </div>
-      <div class="felx flex-col max-w-[360px] w-full mt-[80px]">
+      <div class="felx flex-col max-w-[360px] w-full mt-[150px] mr-[150px]">
         <swiper
           :effect="'cards'"
           :grabCursor="true"

@@ -11,6 +11,7 @@
       >
         {{ $t("BASKET.RECIPIENT_DETAIL") }}
       </h5>
+<<<<<<< HEAD
       <XInput
         v-model="client.name"
         id="name"
@@ -35,6 +36,20 @@
         :error-text="errors.phone"
         @input="validateField('phone')"
       />
+=======
+      <div name="Name">
+        <XInput
+          v-model="client.name"
+          id="name"
+          placeholder="Name"
+          :isError="errors.name ? true : false"
+          :error-text="errors.name"
+        />
+      </div>
+
+      <XInput v-model="client.surname" id="surname" placeholder="Surname" />
+      <XInput v-model="client.phone" id="phone" placeholder="+998" />
+>>>>>>> 32180a5702ab7a6e10776f137234a1a4728af35a
       <XInput
         v-model="client.email"
         id="email"

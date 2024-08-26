@@ -25,11 +25,11 @@ import { RouterView } from "vue-router";
       <div class="mt-[68px] flex flex-col gap-[16px]">
         <RouterLink
           to="/user/info"
-          class="hover:text-blue-500 flex gap-[10px] items-center"
-          :class="route.name === 'userInfo' ? 'text-black ' : 'text-zinc-400'"
+          class="hover:text-black flex gap-[10px] items-center"
+          :class="route.name === 'user-info' ? ' text-black ' : 'text-zinc-400'"
         >
           <img
-            :class="route.name === 'userInfo' ? 'opacity-100' : 'opacity-50'"
+            :class="route.name === 'user-info' ? 'opacity-100' : 'opacity-50'"
             src="/images/icons/profile.svg"
             alt="Profile"
           />
@@ -39,18 +39,14 @@ import { RouterView } from "vue-router";
         </RouterLink>
         <RouterLink
           to="/user/purchases"
-          class="hover:text-blue-500 flex gap-[10px] items-center"
+          class="hover:text-black flex gap-[10px] items-center"
           :class="
-            route.name === 'userInfo-myPuschuases'
-              ? 'text-black '
-              : 'text-zinc-400'
+            route.name === 'user-purchases' ? ' text-black' : ' text-zinc-400'
           "
         >
           <img
             :class="
-              route.name === 'userInfo-myPuschuases'
-                ? 'opacity-100'
-                : 'opacity-50'
+              route.name === 'user-purchases' ? 'opacity-100' : 'opacity-50'
             "
             class="opacity-66"
             src="/images/icons/basket.svg"
