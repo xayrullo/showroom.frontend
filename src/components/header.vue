@@ -218,17 +218,17 @@ const setLang = (lang: string) => {
   i18n.locale.value = lang;
 };
 
-const hideDropdown = () => {
-  languageShow.value = false;
-};
-const handleClickOutside = (event: MouseEvent) => {
-  if (dropdown.value && !dropdown.value.contains(event.target as Node)) {
-    hideDropdown();
-  }
-};
+// const hideDropdown = () => {
+//   languageShow.value = false;
+// };
+// const handleClickOutside = (event: MouseEvent) => {
+//   if (dropdown.value && !dropdown.value.contains(event.target as Node)) {
+//     hideDropdown();
+//   }
+// };
 
 onMounted(() => {
-  document.addEventListener('click', handleClickOutside);
+  // document.addEventListener('click', handleClickOutside);
 });    
 
 function toProfile() {
