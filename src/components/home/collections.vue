@@ -1,6 +1,6 @@
 <template>
   <div
-    class="p-[72px] bg-[url('/images/mainBG.svg')] bg-[length:100%_100%] max-w-[1500px] w-full h-[800px] flex justify-between"
+    class="p-[72px] bg-[url('/images/mainBG.svg')] bg-cover bg-no-repeat w-full h-[800px] flex justify-between"
   >
     <div>
       <h1
@@ -8,8 +8,8 @@
       >
         {{ $t("CATEGORIES.COLLECTION") }}
       </h1>
-      <RouterLink to="/products"
-        ><button
+      <RouterLink to="/products">
+        <button
           id="collection"
           class="w-[170px] h-[42px] rounded-[24px] bg-white"
         >
@@ -18,8 +18,8 @@
           >
             {{ $t("COMMANDS.SEE_COLLECTION") }}
           </h4>
-        </button></RouterLink
-      >
+        </button>
+      </RouterLink>
     </div>
     <div class="felx flex-col max-w-[360px] w-full mt-[80px]">
       <swiper
