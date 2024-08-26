@@ -194,7 +194,7 @@ import { useI18n } from 'vue-i18n';
 
 import { useAuthStore } from "@/stores/auth"
 
-import ModalCategory from "@/components/modals/category.vue";
+import ModalCategory from "@/components/menu/categories.vue";
 import ModalBasket from "@/components/modals/basket.vue"
 import ModalLogin from "@/components/modals/login.vue"
 import ModalSms from "@/components/modals/sms.vue"
