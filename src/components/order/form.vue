@@ -11,21 +11,37 @@
       >
         {{ $t("BASKET.RECIPIENT_DETAIL") }}
       </h5>
-      <div name="Name">
-        <XInput
-          v-model="client.name"
-          id="name"
-          placeholder="Name"
-          :isError="errors.name ? true : false"
-          :error-text="errors.name"
-        />
-      </div>
-      <XInput v-model="client.surname" id="surname" placeholder="Surname" />
-      <XInput v-model="client.phone" id="phone" placeholder="+998" />
+      <XInput
+        v-model="client.name"
+        id="name"
+        placeholder="Name"
+        :isError="errors.name ? true : false"
+        :error-text="errors.name"
+        @input="validateField('name')"
+      />
+      <XInput
+        v-model="client.surname"
+        id="surname"
+        placeholder="Surname"
+        :isError="errors.surname ? true : false"
+        :error-text="errors.surname"
+        @input="validateField('surname')"
+      />
+      <XInput
+        v-model="client.phone"
+        id="phone"
+        placeholder="+998"
+        :isError="errors.phone ? true : false"
+        :error-text="errors.phone"
+        @input="validateField('phone')"
+      />
       <XInput
         v-model="client.email"
         id="email"
         placeholder="name@example.com"
+        :isError="errors.email ? true : false"
+        :error-text="errors.email"
+        @input="validateField('email')"
       />
     </div>
     <div class="mt-[24px] flex flex-col gap-[12px]">
@@ -38,29 +54,30 @@
       <div class="h-[42px]">
         <SelectCountry
           placeholder="Country"
-          class="w-[240px] h-[42px] rounded-[6px] border-[1px] p-[10px] border-gray-300 outline-none text-[14px]"
-          :country="countrySelected"
-          @countrySelected="(country) => (countrySelected = country)"
+          class="w-[240px] h-[42px] rounded-[6px] border-[1px] p-[10px] outline-none text-[14px]"
+          :class="errors.country ? 'border-red-600' : 'border-gray-300'"
+          :country="client.country"
+          @countrySelected="(country) => (client.country = country)"
+          @input="validateField('country')"
         />
-        <span
-          class="font-medium text-[12px] leading-[18px] text-red-600"
-          >{{
-        }}</span>
+        <span class="font-medium text-[12px] leading-[18px] text-red-600">
+          {{ errors.country }}
+        </span>
       </div>
       <div class="h-[42px]">
         <SelectCity
           placeholder="Region"
-          class="w-[240px] h-[42px] rounded-[6px] border-[1px] p-[10px] border-gray-300 outline-none text-[14px]"
-          :country="countrySelected"
-          :region="regionSelected"
-          @regionSelected="(region) => (regionSelected = region)"
+          class="w-[240px] h-[42px] rounded-[6px] border-[1px] p-[10px] outline-none text-[14px]"
+          :class="errors.region ? 'border-red-600' : 'border-gray-300'"
+          :country="client.country"
+          :region="client.region"
+          @input="validateField('region')"
+          @regionSelected="(region) => (client.region = region)"
         />
-        <span
-          class="font-medium text-[12px] leading-[18px] text-red-600"
-          >{{
-        }}</span>
+        <span class="font-medium text-[12px] leading-[18px] text-red-600">
+          {{ errors.region }}
+        </span>
       </div>
-      <XInput />
       <div>
         <input
           type="text"
@@ -227,13 +244,18 @@ interface FormValues {
   surname: string;
   phone: string;
   email: string;
+  country: string;
+  region: string;
 }
 
+const isModal = ref(false);
 const client = ref<FormValues>({
   name: "",
   surname: "",
   phone: "",
   email: "",
+  country: "",
+  region: "",
 });
 
 const schema = yup.object({
@@ -241,12 +263,12 @@ const schema = yup.object({
     .string()
     .required("Name is required")
     .min(3, "Name must be at least 3 characters"),
-  // surname: yup
-  //   .string()
-  //   .required("Surname is required")
-  //   .min(3, "Surname must be at least 3 characters"),
-  // phone: yup.string().required("Phone is required"),
-  // email: yup.string(),
+  surname: yup
+    .string()
+    .required("Surname is required")
+    .min(3, "Surname must be at least 3 characters"),
+  phone: yup.string().required("Phone is required"),
+  email: yup.string(),
 });
 
 const errors = ref<FormValues>({
@@ -254,7 +276,26 @@ const errors = ref<FormValues>({
   surname: "",
   phone: "",
   email: "",
+  country: "",
+  region: "",
 });
+
+// watch(
+//   () => client.value,
+//   async () => {
+//     validateForm();
+//   },
+//   { deep: true }
+// );
+
+const validateField = async (field: keyof FormValues): Promise<void> => {
+  try {
+    await schema.validateAt(field, client.value);
+    errors.value[field] = "";
+  } catch (err) {
+    errors.value[field] = (err as yup.ValidationError).message;
+  }
+};
 
 const validateForm = async (): Promise<boolean> => {
   try {
@@ -262,7 +303,6 @@ const validateForm = async (): Promise<boolean> => {
     return true;
   } catch (err: any) {
     if (err.inner) {
-      console.log("Err", err.inner, client.value);
       err.inner.forEach((error: any) => {
         errors.value[error.path as keyof FormValues] = error.message;
       });
@@ -277,7 +317,9 @@ async function onSubmit() {
     surname: "",
     phone: "",
     email: "",
-  }; // Clear previous errors
+    country: "",
+    region: "",
+  };
   const isValid = await validateForm();
   if (isValid) {
     console.log("Form Submitted:", client.value);
