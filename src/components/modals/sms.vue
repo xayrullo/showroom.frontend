@@ -13,6 +13,7 @@
       </h5>
       <input
         type="tel"
+        maxlength="6"
         placeholder="XXX-XXX"
         class="mt-[15px] max-w-[335px] px-[100px] w-full h-[40px] outline-none font-bold text-[28px] leading-[36.96px]"
       />

@@ -23,7 +23,7 @@
           />
           <input
             type="number"
-            placeholder="+998"
+            placeholder="+998 12 345 67 89"
             class="w-max-[240px] h-[42px] rounded-[6px] border-[1px] border-gray-500 px-[12px]"
           />
           <input

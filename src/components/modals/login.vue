@@ -13,7 +13,8 @@
         {{ $t("CONFIRM.PHONE_NUMBER") }}
       </h5>
       <input
-        type="tel"
+        type="number"
+        maxlength="13"
         placeholder="+998 (97) 123 45 67"
         class="mt-[15px] max-w-[335px] w-full h-[40px] outline-none font-bold text-[28px] leading-[36.96px] px-[20px]"
       />

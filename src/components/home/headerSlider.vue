@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="relative">
     <swiper
       :centeredSlides="true"
       :autoplay="{
@@ -7,7 +7,7 @@
         disableOnInteraction: false,
       }"
       :modules="modules"
-      class="w-[100%] h-[100%]"
+      class="w-[100%] h-[100%] z-0"
     >
       <swiper-slide v-for="(banner, ind) in banners" :key="ind">
         <img
@@ -25,9 +25,11 @@
         </div>
       </swiper-slide>
     </swiper>
-    <div class="bg-black z-100">
+    <div
+      class="bg-black z-10 flex justify-between mt-[-200px] mr-[20px] mb-[200px]"
+    >
       <div></div>
-      <div class="flex gap-[30px] items-center">
+      <div class="flex gap-[30px] items-center z-10">
         <div class="flex">
           <h4 class="font-bold text-[16px] leading-[22px] text-white">
             {{ banners.length }}
@@ -35,13 +37,19 @@
           <h4 class="font-bold text-[16px] leading-[22px] text-white">|</h4>
           <h4 class="font-bold text-[16px] leading-[22px] text-white">2</h4>
         </div>
-        <img src="/images/icons/pausaChevron.svg" alt="" />
+        <img
+          class="cursor-pointer"
+          @click="swiperAction()"
+          src="/images/icons/pausaChevron.svg"
+          alt=""
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
@@ -52,5 +60,19 @@ const props = defineProps<{
   banners: IBanner[];
 }>();
 
+const isPlay = ref(false);
+const isAutoPlay = ref(false);
+
 const modules = [Autoplay, Pagination, Navigation];
+
+function swiperAction() {
+  isPlay.value = !isPlay.value;
+  if (isPlay.value === true) {
+    isAutoPlay.value = true;
+  } else {
+    isAutoPlay.value = false;
+  }
+  console.log(" isAutoPlay", isAutoPlay);
+  console.log(" isPlay", isPlay);
+}
 </script>

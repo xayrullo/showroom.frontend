@@ -3,14 +3,11 @@
     v-if="isModalBasket"
     v-model="isModalBasket"
     position="right"
-    width="400px"
+    width="360px overflow-hidden"
   >
-    <div class="p-[20px] w-[360px] h-[720px] relative">
+    <div class="p-[20px] w-[360px] h-[90%] overflow-y-auto">
       <div class="flex justify-between">
-        <h3
-          class="font-bold text-[28px] leading-[33.91px]"
-          style="font-family: &quot;Cormorant SC&quot;, &quot;sans-serif&quot;"
-        >
+        <h3 class="font-bold text-[28px] leading-[33.91px] font-sans">
           {{ $t("BASKET.BASKET") }} (6)
         </h3>
         <img
@@ -20,9 +17,9 @@
           class="cursor-pointer"
         />
       </div>
-      <div class="">
+      <div class="space-y-4">
         <div v-for="product in 9" class="flex gap-[24px] mt-[19px]">
-          <img class="w-[103px]" src="/images/infoPage1.svg" alt="" />
+          <img class="w-[103px] z-0" src="/images/infoPage1.svg" alt="" />
           <div class="flex flex-col gap-[12px]">
             <h4 class="font-bold text-[16px] leading-[20px] uppercase">
               <span>190</span> <span>USD</span>
@@ -52,7 +49,7 @@
       </div>
       <RouterLink
         to="/basket"
-        class="font-bold text-[15px] leading-[19.8px] text-center uppercase max-w-[315px] w-[100%] h-[48px] rounded-[12px] py-[14px] bg-black text-white bottom-0 inset-x-0 absolute mx-[20px] mr-[20px]"
+        class="font-bold text-[15px] leading-[19.8px] text-center uppercase max-w-[315px] w-[100%] h-[48px] rounded-[12px] py-[14px] bg-black text-white z-10 bottom-0 inset-x-0 absolute mx-[20px] mb-[20px]"
         @click="closeRightModal"
       >
         {{ $t("COMMANDS.GO_TO_CHECKOUT") }}

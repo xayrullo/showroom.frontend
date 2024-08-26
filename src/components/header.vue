@@ -5,7 +5,7 @@
         class="w-[100%] h-[32px] flex justify-between items-center px-[72px]"
         style="background: rgba(4, 30, 58, 1)"
       >
-        <div class="w-[170px]"></div>
+        <div class="w-[100px]"></div>
         <div class="flex gap-[6px] text-center">
           <h3 class="font-bold text-[11px] leading-[14.52px] text-white">
             {{ $t("HEADER.SUMMER_SALE") }}
@@ -17,6 +17,7 @@
           </h3>
         </div>
         <div class="flex gap-[6px] cursor-pointer"  @click="openLanguage(0)" >
+          <div class="flex gap-[6px]" @click="openLanguage(0)">
           <img src="/images/icons/icon.svg" alt="" />
           <div>
             <h3
@@ -54,6 +55,7 @@
                 />
               </div>
             </div>
+          </div>
           </div>
           <div>
             <h3
@@ -171,7 +173,7 @@
           <RouterLink to="/saveProduct">
             <img
               class="cursor-pointer"
-              src="/images/icons/savedone.svg"
+              src="/images/icons/savedoneBlack.svg"
               alt="SaveDone"
             />
           </RouterLink>
@@ -218,19 +220,6 @@ const setLang = (lang: string) => {
   i18n.locale.value = lang;
 };
 
-// const hideDropdown = () => {
-//   languageShow.value = false;
-// };
-// const handleClickOutside = (event: MouseEvent) => {
-//   if (dropdown.value && !dropdown.value.contains(event.target as Node)) {
-//     hideDropdown();
-//   }
-// };
-
-onMounted(() => {
-  // document.addEventListener('click', handleClickOutside);
-});    
-
 function toProfile() {
   if (authStore.isAuthenticated) {
     router.push('/user/info')
@@ -250,6 +239,7 @@ function showRightModal() {
 }
 function showCenterModal() {
   isModalCategory.value = true;
+  openCategory();
 }
 
 function openMenu(val: number) {
@@ -297,7 +287,7 @@ function openCurrency(val: number) {
     currencyShow.value = false;
   }
 }
-function openCategories(val: number) {
+function openCategory(val: number) {
   categoryShow.value = !categoryShow.value;
   if (
     show.value == true ||

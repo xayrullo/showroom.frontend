@@ -20,6 +20,7 @@
           :error-text="errors.name"
         />
       </div>
+
       <XInput v-model="client.surname" id="surname" placeholder="Surname" />
       <XInput v-model="client.phone" id="phone" placeholder="+998" />
       <XInput

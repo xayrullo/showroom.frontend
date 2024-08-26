@@ -1,8 +1,8 @@
 <template>
   <div
-    class="p-[72px] bg-[url('/images/mainBG.svg')] bg-cover bg-no-repeat w-full h-[800px] flex justify-between"
+    class="p-[72px] bg-[url('/images/mainBG.svg')] bg-[length:100%_100%] h-[1000px] flex justify-between"
   >
-    <div>
+    <div class="mt-[100px]">
       <h1
         class="uppercase font-bold text-[64px] leading-[77.5px] max-w-[399px] font-sans"
       >
@@ -21,7 +21,7 @@
         </button>
       </RouterLink>
     </div>
-    <div class="felx flex-col max-w-[360px] w-full mt-[80px]">
+    <div class="felx flex-col max-w-[360px] w-full mt-[130px] mr-[100px]">
       <swiper
         :effect="'cards'"
         :grabCursor="true"
